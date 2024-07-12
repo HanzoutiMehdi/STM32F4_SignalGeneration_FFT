@@ -34,4 +34,30 @@ This project utilizes the STM32F407 microcontroller to generate various types of
 - Install STM32CubeMX and EWARM IAR to compile and flash the firmware onto the STM32F407 microcontroller.
 - Basic knowledge of C programming and embedded systems development.
 
-### Setting Up the Environment
+## Configuring the Project
+Ensure the following peripherals are correctly configured in STM32CubeMX:
+
+TIM3 for triggering ADC conversions.
+TIM6 for triggering DAC updates (depending on the signal type).
+ADC1 with appropriate settings for continuous conversion mode and DMA.
+DAC with configurations specific to the chosen signal type.
+
+## Signal Types
+This project supports various signal types:
+
+SIN_WAVE: Generates a sine wave using pre-defined values stored in the sinewave[] array.
+TRIANGLE_WAVE: Generates a triangle wave using the DAC's triangle wave generation feature.
+SQUARE_WAVE: Generates a square wave using GPIO toggling.
+
+## FFT Configuration
+FFT is configured as follows:
+
+FFT size (FFT_SIZE) is set to 1024 for analyzing frequency components.
+ARM CMSIS DSP library (arm_cfft_radix4_f32 and arm_cmplx_mag_f32) is used for FFT processing.
+Running the Project
+Narrator: To run the project:
+
+## Compile the project using EWARM IAR.
+Flash the compiled firmware onto the STM32F407 microcontroller.
+Monitor the LED (GPIOD) toggling to indicate FFT processing.
+Use a serial monitor or debugger to observe FFT results and verify signal generation.
